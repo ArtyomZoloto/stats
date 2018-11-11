@@ -4,13 +4,10 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import ru.sbrf.dog900.stats.dao.*;
+import ru.sbrf.dog900.stats.service.StatsService;
 
 @Controller
 public class HttpController {
-
-    @Value("${query.metrics}")
-    private String metrics;
 
     @Value("${welcome.message}")
     private String message;
@@ -18,10 +15,10 @@ public class HttpController {
     @Value("${error.message}")
     private String errorMessage;
 
-    private Dao dao;
+    StatsService service;
 
-    public HttpController(Dao dao) {
-        this.dao = dao;
+    public HttpController(StatsService service) {
+        this.service = service;
     }
 
 
@@ -35,7 +32,7 @@ public class HttpController {
     public String metrics(Model model,
                           @RequestParam("dateFrom") String dateFrom,
                           @RequestParam("dateTo") String dateTo) {
-        model.addAttribute("metrics", dao.get(dateFrom, dateTo
+        model.addAttribute("metrics", service.get(dateFrom, dateTo
         ));
         return "metrics";
     }
