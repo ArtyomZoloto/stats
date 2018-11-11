@@ -1,6 +1,6 @@
 package ru.sbrf.dog900.stats.sql;
 
-public class Constants {
+public class Query {
     public static final String BUSINESS_METRICS = "SELECT\n" +
             "        to_char(n.esb_msg_in_created_on,'DD.MM.YYYY')   AS \"ДАТА\",\n" +
             "        s.name                    AS \"ПОТРЕБИТЕЛЬ\",\n" +

@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/js/jquery-ui/jquery-ui.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/js/jquery-ui/jquery-ui.theme.min.css}">
+    <title>Период статистики</title>
+</head>
+<body>
+<div class="container">
+    <div class="jumbotron">
+        <h2>Выберите период:</h2>
+
+
+        <form class="form-inline" th:action="@{/metrics}" method="get">
+            <label for="dateFrom" class="mr-sm-2">Date From:</label>
+            <input type="text" th:name="dateFrom" class="form-control mb-2 mr-sm-2" id="dateFrom"/>
+            <label for="dateTo" class="mr-sm-2">Date To:</label>
+            <input type="text" th:name="dateTo" class="form-control mb-2 mr-sm-2" id="dateTo"/>
+
+            <button type="submit" class="btn btn-primary mb-2">Показать</button>
+        </form>
+
+    </div>
+
+    <!-- Check if errorMessage is not null and not empty -->
+
+    <div th:if="${errorMessage}" th:utext="${errorMessage}"
+         style="color:red;font-style:italic;">
+        ...
+    </div>
+
+    <script th:src="@{/js/jquery-3.3.1.min.js}"></script>
+    <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+    <script th:src="@{/js/jquery-ui/jquery-ui.min.js}"></script>
+    <script>
+     $( function() {
+         $( "#dateFrom" ).datepicker();
+         $( "#dateTo" ).datepicker();
+     } );
+    </script>
+</div>
+</body>
+</html>

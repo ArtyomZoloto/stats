@@ -1,9 +1,8 @@
 package ru.sbrf.dog900.stats.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Value;
+import lombok.*;
 
-@Value
+@Data
 @AllArgsConstructor
 public class BusinessMetric {
     String date, consumer, template, channel;
